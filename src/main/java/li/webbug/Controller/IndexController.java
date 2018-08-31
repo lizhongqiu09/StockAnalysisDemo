@@ -33,9 +33,9 @@ public class IndexController {
         }
     }
 
-    @GetMapping("/a")
+    @GetMapping("/getStockInfo")
     //    @Scheduled(cron = "0/5 * * * * *")
-    public String a(){
+    public String getStockInfo(){
         RestTemplate restTemplate = new RestTemplate();
         String object = restTemplate.getForObject("http://hq.sinajs.cn/etag.php?rn=1534923485634&list=gb_ibb", String.class);
         String[] strings = object.split("\"");
