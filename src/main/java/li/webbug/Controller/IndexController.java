@@ -66,12 +66,12 @@ public class IndexController {
     }
 
     private void sendMail(String todayMessage) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(username);
-        message.setTo("");
-        message.setSubject("股票消息");
-        message.setText(todayMessage);
-        javaMailSender.send(message);
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom(username);
+//        message.setTo("");
+//        message.setSubject("股票消息");
+//        message.setText(todayMessage);
+//        javaMailSender.send(message);
     }
 
 }
