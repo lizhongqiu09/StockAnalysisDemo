@@ -1,5 +1,6 @@
 package li.webbug.Controller;
 
+import li.webbug.MQ.Sender;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,6 +19,8 @@ public class IndexController {
 
     @Autowired
     private JavaMailSender javaMailSender;
+    @Autowired
+    private Sender sender;
     @Value("${spring.mail.username}")
     private String username;
 
@@ -42,9 +45,11 @@ public class IndexController {
         analyzeInfo(strings[1]);
         String[] info = strings[1].split(",");
         if(Float.valueOf(info[26]) < Float.valueOf(info[1])){
-            sendMail("今天升了");
+//            sendMail("今天升了");
+            sender.send("今天升了");
         }else{
-            sendMail("今天跌了");
+//            sendMail("今天跌了");
+            sender.send("今天跌了");
         }
         return strings[1];
     }
