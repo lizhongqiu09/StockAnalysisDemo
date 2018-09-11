@@ -1,6 +1,4 @@
-package li.webbug.DTO;
-
-import java.math.BigDecimal;
+package li.webbug.dto;
 
 public class StockDTO {
     private String name;

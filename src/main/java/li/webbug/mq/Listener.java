@@ -1,4 +1,4 @@
-package li.webbug.MQ;
+package li.webbug.mq;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
