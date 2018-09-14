@@ -1,7 +1,7 @@
 package li.webbug.controller;
 
+import io.swagger.annotations.Api;
 import li.webbug.mq.Sender;
-import li.webbug.service.MemberService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
+@Api(value = "", tags = "首页")
 @RestController
 public class IndexController {
 
@@ -72,12 +73,6 @@ public class IndexController {
 //        message.setSubject("股票消息");
 //        message.setText(todayMessage);
 //        javaMailSender.send(message);
-    }
-
-    @Autowired
-    MemberService memberService;
-    public void ass(){
-        memberService.selectList();
     }
 
 }
