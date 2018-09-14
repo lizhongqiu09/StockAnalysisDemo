@@ -1,20 +1,18 @@
 package li.webbug.controller;
 
 import li.webbug.mq.Sender;
+import li.webbug.service.MemberService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class IndexController {
@@ -77,11 +75,9 @@ public class IndexController {
     }
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    @GetMapping("aa")
-    public List<Map<String, Object>> aa(){
-        List<Map<String, Object>> list = jdbcTemplate.queryForList("select * from member");
-        return list;
+    MemberService memberService;
+    public void ass(){
+        memberService.selectList();
     }
 
 }

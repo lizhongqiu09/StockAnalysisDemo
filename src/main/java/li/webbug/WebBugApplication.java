@@ -4,10 +4,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
+//计划任务
 @EnableScheduling
-//@MapperScan("li.webbug.dao")
+//开启事务
+@EnableTransactionManagement
+@MapperScan("li.webbug.dao")
 public class WebBugApplication {
 
     public static void main(String[] args) {
