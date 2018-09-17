@@ -1,8 +1,11 @@
 package li.webbug.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import li.webbug.entity.Member;
 import li.webbug.mq.Sender;
+import li.webbug.service.MemberService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 @Api(value = "", tags = "首页")
 @RestController
@@ -25,6 +30,8 @@ public class IndexController {
     private Sender sender;
     @Value("${spring.mail.username}")
     private String username;
+    @Autowired
+    MemberService memberService;
 
     @ApiOperation(value = "获取股票信息" ,notes  = "获取股票信息")
     @GetMapping("/")
@@ -68,4 +75,19 @@ public class IndexController {
         return null;
     }
 
+    @ApiOperation(value = "会员列表")
+    @GetMapping("/memberList")
+    public List<Member> getMemberList(){
+        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+//        wrapper.lambda().eq(Member::getName,"b");
+        List<Member> list = memberService.list(wrapper);
+        return list;
+    }
+
+    @ApiOperation(value = "获取单个会员")
+    @GetMapping("/member/{id}")
+    public Member getMember(@PathVariable("id") Long id){
+        Member member = memberService.getById(id);
+        return member;
+    }
 }
