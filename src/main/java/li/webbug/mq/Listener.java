@@ -8,8 +8,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
-@Component
-@RabbitListener(queues = "email")
+//@Component
+//@RabbitListener(queues = "email")
 public class Listener {
 
     @Autowired

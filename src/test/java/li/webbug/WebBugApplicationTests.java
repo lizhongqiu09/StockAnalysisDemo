@@ -22,11 +22,13 @@ public class WebBugApplicationTests {
 
     @Autowired
     MemberService memberService;
+    @Autowired
+    MemberMapper memberMapper;
     @Test
     public void ass(){
-        List<Member> memberList = memberService.selectListByWrapper(new QueryWrapper<Member>()
-                .lambda().like(Member::getName, "a"));
-        System.out.print(memberList);
+        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+        List<Member> list = memberService.list(wrapper);
+        list.forEach(System.out::println);
     }
 
 }

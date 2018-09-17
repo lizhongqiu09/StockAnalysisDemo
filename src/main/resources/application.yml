@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://10.10.8.97:3306/stock?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://10.10.8.109:3306/stock?autoReconnect=true&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver

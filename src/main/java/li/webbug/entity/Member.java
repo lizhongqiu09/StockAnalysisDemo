@@ -39,6 +39,15 @@ public class Member extends Model<Member> {
     }
 
     @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name=" + name  +
+                ", mobile=" + mobile  +
+                '}';
+    }
+
+    @Override
     protected Serializable pkVal() {
         return this.id;
     }

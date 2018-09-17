@@ -1,6 +1,7 @@
 package li.webbug.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import li.webbug.mq.Sender;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,6 +26,7 @@ public class IndexController {
     @Value("${spring.mail.username}")
     private String username;
 
+    @ApiOperation(value = "获取股票信息" ,notes  = "获取股票信息")
     @GetMapping("/")
     public void index(){
         String url = "http://stock.finance.sina.com.cn/usstock/quotes/IBB.html";
@@ -64,15 +66,6 @@ public class IndexController {
 //        info[26];   昨天收盘价
 //        info[1];   今天收盘价
         return null;
-    }
-
-    private void sendMail(String todayMessage) {
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom(username);
-//        message.setTo("");
-//        message.setSubject("股票消息");
-//        message.setText(todayMessage);
-//        javaMailSender.send(message);
     }
 
 }
